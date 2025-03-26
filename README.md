@@ -1,85 +1,8 @@
 # Midea AC LAN
 
-[![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/hacs/integration)
-[![Stable](https://img.shields.io/github/v/release/wuwentao/midea_ac_lan)](https://github.com/wuwentao/midea_ac_lan/releases/latest)
-[![Super-Linter](https://github.com/wuwentao/midea_ac_lan/actions/workflows/linter.yml/badge.svg)](https://github.com/marketplace/actions/super-linter)
+# FORK from https://github.com/wuwentao/midea_ac_lan
 
-English | [简体中文](README_hans.md) | [Discord Chat](https://discord.com/invite/ZWdd2fXndn) | [QQ Group](https://qm.qq.com/q/l53SGEwlZ6)
-
-Control your Midea M-Smart appliances via local area network.
-
-- Automated device discover and configuration based Home Assistant config flow UI.
-- Extra sensors and switches.
-- Synchronize status with the appliance by long TCP connection in time.
-
-⭐If this component is helpful for you, please star it, it encourages me a lot.
-
-**_❗Note: Home Assistant 2023.8 or higher required for this integration_**
-
-## ❗❗❗❗❗❗Important Notice❗❗❗❗❗❗
-
-1. Midea has closed the server-side Token APIs in Meiju Cloud and Smarthome Cloud, and other cloud APIs are expected to be closed successively, which will prevent adding new devices in the future.
-2. For devices that have been successfully added, please be sure to **copy or back up the device's `.json` configuration file to a backup device outside of HAOS** for future use
-3. How to obtain the device's `.json` configuration file: Please refer to [Debug and Test](doc/debug.md#get-device-json-config)
-
-## Upgrade from georgezhao2010/midea_ac_lan
-
-1. Remove old georgezhao2010/midea_ac_lan integration
-2. [Install current integration](#installation), reboot HA
-3. You devices will NOT be deleted, it should still exist and you don't need to discover or add it again.
-4. If you can't found your device entries, try to configure your device and enable it in `Settings -> Devices & Services -> Midea AC LAN -> Devices -> CONFIGURE`
-5. Done, your devices should works as before.
-
-## Supported brands
-
-![ariston](brands/ariston.png) ![beverly](brands/beverly.png) ![bugu](brands/bugu.png) \
-![carrier](brands/carrier.png) ![colmo](brands/colmo.png) ![comfee](brands/comfee.png) \
-![electrolux](brands/electrolux.png) ![invertor](brands/invertor.png) ![littleswan](brands/littleswan.png) \
-![midea](brands/midea.png) ![netsu](brands/netsu.png) ![ProBreeze](brands/probreeze.png) \
-![rotenso](brands/rotenso.png) ![toshiba](brands/toshiba.png) ![vandelo](brands/vandelo.png) \
-![wahin](brands/wahin.png)
-
-And more.
-
-## Supported appliances
-
-| Type | Name                       | Documents          |
-| ---- | -------------------------- | ------------------ |
-| 13   | Light                      | [13.md](doc/13.md) |
-| 26   | Bathroom Master            | [26.md](doc/26.md) |
-| 34   | Sink Dishwasher            | [34.md](doc/34.md) |
-| 40   | Integrated Ceiling Fan     | [40.md](doc/40.md) |
-| A1   | Dehumidifier               | [A1.md](doc/A1.md) |
-| AC   | Air Conditioner            | [AC.md](doc/AC.md) |
-| AD   | Air Box                    | [AD.md](doc/AD.md) |
-| B0   | Microwave Oven             | [B0.md](doc/B0.md) |
-| B1   | Electric Oven              | [B1.md](doc/B1.md) |
-| B3   | Dish Sterilizer            | [B3.md](doc/B3.md) |
-| B4   | Toaster                    | [B4.md](doc/B4.md) |
-| B6   | Range Hood                 | [B6.md](doc/B6.md) |
-| BF   | Microwave Steam Oven       | [BF.md](doc/BF.md) |
-| C2   | Toilet                     | [C2.md](doc/C2.md) |
-| C3   | Heat Pump Wi-Fi Controller | [C3.md](doc/C3.md) |
-| CA   | Refrigerator               | [CA.md](doc/CA.md) |
-| CC   | MDV Wi-Fi Controller       | [CC.md](doc/CC.md) |
-| CD   | Heat Pump Water Heater     | [CC.md](doc/CD.md) |
-| CE   | Fresh Air Appliance        | [CE.md](doc/CE.md) |
-| CF   | Heat Pump                  | [CF.md](doc/CF.md) |
-| DA   | Top Load Washer            | [DA.md](doc/DA.md) |
-| DB   | Front Load Washer          | [DB.md](doc/DB.md) |
-| DC   | Clothes Dryer              | [DC.md](doc/DC.md) |
-| E1   | Dishwasher                 | [E1.md](doc/E1.md) |
-| E2   | Electric Water Heater      | [E2.md](doc/E2.md) |
-| E3   | Gas Water Heater           | [E3.md](doc/E3.md) |
-| E6   | Gas Stove                  | [E6.md](doc/E6.md) |
-| E8   | Electric Slow Cooker       | [E8.md](doc/E8.md) |
-| EA   | Electric Rice Cooker       | [EA.md](doc/EA.md) |
-| EC   | Electric Pressure Cooker   | [EC.md](doc/EC.md) |
-| ED   | Water Drinking Appliance   | [ED.md](doc/ED.md) |
-| FA   | Fan                        | [FA.md](doc/FA.md) |
-| FB   | Electric Heater            | [FB.md](doc/FB.md) |
-| FC   | Air Purifier               | [FC.md](doc/FC.md) |
-| FD   | Humidifier                 | [FD.md](doc/FD.md) |
+## add support for 56000AG (Midea 120i BT)
 
 ## Installation
 
@@ -94,12 +17,12 @@ And more.
 > run this script in HA Terminal or SSH add-on
 
 ```shell
-wget -O - https://github.com/wuwentao/midea_ac_lan/raw/master/scripts/install.sh | ARCHIVE_TAG=latest bash -
+wget -O - https://github.com/ariellukowski/midea_ac_lan/raw/master/scripts/install.sh | ARCHIVE_TAG=latest bash -
 ```
 
 ### Option 3: Manual Install
 
-1. Download `midea_ac_lan.zip` from [Latest Release](https://github.com/wuwentao/midea_ac_lan/releases/latest)
+1. Download `midea_ac_lan.zip` from [Latest Release](https://github.com/ariellukoeski/midea_ac_lan/releases/latest)
 2. copy `midea_ac_lan.zip` to `/custom_components/midea_ac_lan` in Home Assistant.
 3. **Restart Home Assistant**.
 
